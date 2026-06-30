@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import './App.css'
 import Form from './components/Form'
 import List from './components/List'
 
@@ -42,11 +43,20 @@ function App() {
   )
 
   return (
-    <div className="App">
-      <h1>CRUD con LocalStorage</h1>
-      <Form addOrUpdateItem={addOrUpdateItem} itemToEdit={itemToEdit} />
-      <section>
-        <h2>Buscar elemento</h2>
+    <main className="app-shell">
+      <section className="app-card">
+        <header className="app-header">
+          <p className="app-eyebrow">Proyecto CRUD con React</p>
+          <h1 className="app-title">CRUD con LocalStorage</h1>
+          <p className="app-description">
+            Agrega, edita y elimina elementos con persistencia en el navegador.
+          </p>
+        </header>
+
+        <Form addOrUpdateItem={addOrUpdateItem} itemToEdit={itemToEdit} />
+
+        <section className="app-section app-search">
+          <h2>Buscar elemento</h2>
         <input
           type="text"
           className="search-input"
@@ -54,16 +64,19 @@ function App() {
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
         />
-        <h2>Resultados</h2>
-        {items.length === 0 ? (
-          <p>No hay elementos guardados todavía. Agrega uno con el formulario.</p>
-        ) : filteredItems.length === 0 ? (
-          <p>No se encontraron elementos con ese nombre.</p>
-        ) : (
-          <List items={filteredItems} deleteItem={deleteItem} editItem={editItem} />
-        )}
+          <h2>Resultados</h2>
+          {items.length === 0 ? (
+            <p className="empty-state">
+              No hay elementos guardados todavía. Agrega uno con el formulario.
+            </p>
+          ) : filteredItems.length === 0 ? (
+            <p className="empty-state">No se encontraron elementos con ese nombre.</p>
+          ) : (
+            <List items={filteredItems} deleteItem={deleteItem} editItem={editItem} />
+          )}
+        </section>
       </section>
-    </div>
+    </main>
   )
 }
 

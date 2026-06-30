@@ -1,8 +1,17 @@
 :root {
-  font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-body: Inter, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-display: Georgia, 'Times New Roman', serif;
+  --paper: rgba(255, 255, 255, 0.84);
+  --paper-strong: rgba(255, 255, 255, 0.92);
+  --ink: #1f2937;
+  --ink-soft: #475569;
+  --title-start: #f59e0b;
+  --title-mid: #fb7185;
+  --title-end: #6366f1;
+  font-family: var(--font-body);
   line-height: 1.5;
   font-weight: 400;
-  color: #1f2937;
+  color: var(--ink);
   background: #f6f7fb;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -24,9 +33,39 @@ body,
 body {
   min-height: 100vh;
   background:
-    radial-gradient(circle at top left, rgba(255, 199, 167, 0.36), transparent 30%),
-    radial-gradient(circle at top right, rgba(160, 211, 255, 0.36), transparent 28%),
-    linear-gradient(180deg, #f6f7fb 0%, #eef2ff 100%);
+    radial-gradient(circle at 12% 18%, rgba(255, 216, 183, 0.85), transparent 24%),
+    radial-gradient(circle at 86% 14%, rgba(196, 181, 253, 0.72), transparent 22%),
+    radial-gradient(circle at 80% 82%, rgba(154, 215, 255, 0.7), transparent 20%),
+    radial-gradient(circle at 18% 78%, rgba(167, 243, 208, 0.55), transparent 22%),
+    linear-gradient(135deg, #fdf2f8 0%, #eff6ff 38%, #f0fdf4 100%);
+  position: relative;
+  overflow-x: hidden;
+}
+
+body::before,
+body::after {
+  content: '';
+  position: fixed;
+  inset: auto;
+  width: 26rem;
+  height: 26rem;
+  border-radius: 999px;
+  filter: blur(40px);
+  pointer-events: none;
+  z-index: -1;
+  opacity: 0.72;
+}
+
+body::before {
+  top: -8rem;
+  left: -7rem;
+  background: rgba(253, 186, 116, 0.34);
+}
+
+body::after {
+  right: -8rem;
+  bottom: -8rem;
+  background: rgba(168, 85, 247, 0.18);
 }
 
 button,
@@ -44,25 +83,25 @@ input {
 
 .app-shell {
   min-height: 100vh;
-  padding: 40px 20px;
+  padding: 56px 20px;
   display: grid;
   place-items: center;
 }
 
 .app-card {
   width: min(760px, 100%);
-  padding: 28px;
-  border-radius: 28px;
-  background: rgba(255, 255, 255, 0.82);
-  border: 1px solid rgba(203, 213, 225, 0.9);
+  padding: 32px;
+  border-radius: 32px;
+  background: var(--paper);
+  border: 1px solid rgba(255, 255, 255, 0.82);
   box-shadow:
-    rgba(15, 23, 42, 0.08) 0 18px 40px -18px,
-    rgba(15, 23, 42, 0.06) 0 8px 18px -10px;
-  backdrop-filter: blur(14px);
+    rgba(15, 23, 42, 0.09) 0 22px 50px -22px,
+    rgba(99, 102, 241, 0.12) 0 10px 26px -12px;
+  backdrop-filter: blur(16px) saturate(1.05);
 }
 
 .app-header {
-  margin-bottom: 22px;
+  margin-bottom: 26px;
   text-align: left;
 }
 
@@ -72,29 +111,34 @@ input {
   font-weight: 700;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: #64748b;
+  color: #8b5cf6;
 }
 
 .app-title {
   margin: 0;
-  font-size: clamp(2rem, 4vw, 3.2rem);
-  line-height: 1.1;
-  letter-spacing: -0.04em;
-  color: #0f172a;
+  font-family: var(--font-display);
+  font-size: clamp(2.35rem, 4vw, 3.65rem);
+  line-height: 0.98;
+  letter-spacing: -0.06em;
+  background: linear-gradient(90deg, var(--title-start), var(--title-mid) 48%, var(--title-end));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-shadow: 0 8px 24px rgba(251, 113, 133, 0.12);
 }
 
 .app-description {
   margin: 12px 0 0;
   max-width: 52ch;
-  color: #475569;
+  color: var(--ink-soft);
 }
 
 .todo-form,
 .app-search {
   padding: 18px;
-  border-radius: 22px;
-  background: rgba(248, 250, 252, 0.92);
-  border: 1px solid rgba(226, 232, 240, 0.95);
+  border-radius: 24px;
+  background: var(--paper-strong);
+  border: 1px solid rgba(226, 232, 240, 0.82);
 }
 
 .todo-form {
@@ -108,7 +152,7 @@ input {
   width: 100%;
   padding: 14px 16px;
   border-radius: 16px;
-  border: 1px solid #cbd5e1;
+  border: 1px solid #d8cfe8;
   background: #ffffff;
   color: #0f172a;
   transition:
@@ -123,8 +167,8 @@ input {
 
 .todo-input:focus,
 .search-input:focus {
-  border-color: #60a5fa;
-  box-shadow: 0 0 0 4px rgba(96, 165, 250, 0.18);
+  border-color: #a78bfa;
+  box-shadow: 0 0 0 4px rgba(167, 139, 250, 0.16);
 }
 
 .todo-button {
@@ -133,8 +177,8 @@ input {
   font-weight: 700;
   cursor: pointer;
   color: #ffffff;
-  background: linear-gradient(135deg, #0f766e, #16a34a);
-  box-shadow: 0 10px 24px rgba(22, 163, 74, 0.2);
+  background: linear-gradient(135deg, #f59e0b, #ec4899);
+  box-shadow: 0 14px 28px rgba(236, 72, 153, 0.18);
   transition:
     transform 160ms ease,
     box-shadow 160ms ease,
@@ -152,12 +196,8 @@ input {
 
 .app-search h2 {
   margin: 0 0 12px;
-  color: #0f172a;
+  color: #1e293b;
   font-size: 1.1rem;
-}
-
-.search-input {
-  margin-bottom: 14px;
 }
 
 .item-list {
@@ -168,16 +208,20 @@ input {
   gap: 12px;
 }
 
+.search-input {
+  margin-bottom: 14px;
+}
+
 .item {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 14px;
   padding: 14px 16px;
-  border-radius: 18px;
+  border-radius: 20px;
   background: #ffffff;
-  border: 1px solid #e2e8f0;
-  box-shadow: 0 8px 18px rgba(15, 23, 42, 0.05);
+  border: 1px solid rgba(226, 232, 240, 0.95);
+  box-shadow: 0 10px 20px rgba(15, 23, 42, 0.06);
 }
 
 .item-value {
@@ -215,7 +259,7 @@ input {
 
 .empty-state {
   margin-top: 14px;
-  color: #475569;
+  color: var(--ink-soft);
 }
 
 @media (max-width: 640px) {

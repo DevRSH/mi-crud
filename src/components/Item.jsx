@@ -1,13 +1,19 @@
-import React, { memo } from 'react';
+import { memo } from 'react'
 
 function Item({ item, deleteItem, editItem }) {
   return (
-    <li>
-      {item.value}
-      <button onClick={() => editItem(item)}>Editar</button>
-      <button onClick={() => deleteItem(item.id)}>Eliminar</button>
+    <li className="item">
+      <span className="item-value">{item.value}</span>
+      <div className="item-actions">
+        <button className="item-button item-button--edit" onClick={() => editItem(item)}>
+          Editar
+        </button>
+        <button className="item-button item-button--delete" onClick={() => deleteItem(item.id)}>
+          Eliminar
+        </button>
+      </div>
     </li>
-  );
+  )
 }
 
-export default memo(Item);
+export default memo(Item)
