@@ -48,6 +48,7 @@ function App() {
         <header className="app-header">
           <p className="app-eyebrow">Proyecto CRUD con React</p>
           <h1 className="app-title">CRUD con LocalStorage</h1>
+          <p className="app-count">Total: {items.length}</p>
           <p className="app-description">
             Agrega, edita y elimina elementos con persistencia en el navegador.
           </p>
