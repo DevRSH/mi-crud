@@ -230,6 +230,11 @@ input {
   word-break: break-word;
 }
 
+.item.completed .item-value {
+  text-decoration: line-through;
+  opacity: 0.6;
+}
+
 .item-actions {
   display: flex;
   gap: 10px;
@@ -255,6 +260,11 @@ input {
 .item-button--delete {
   background: #fee2e2;
   color: #b91c1c;
+}
+
+.todo-button--danger {
+  background: linear-gradient(135deg, #ef4444, #f97316);
+  box-shadow: 0 12px 24px rgba(249, 115, 22, 0.12);
 }
 
 .empty-state {

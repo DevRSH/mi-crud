@@ -26,7 +26,7 @@ function App() {
       )
       setItemToEdit(null)
     } else {
-      setItems([...items, { id: Date.now(), value }])
+      setItems([...items, { id: Date.now(), value, completed: false }])
     }
   }
 
@@ -36,6 +36,17 @@ function App() {
 
   const editItem = (item) => {
     setItemToEdit(item)
+  }
+
+  const toggleComplete = (id) => {
+    setItems(
+      items.map((item) => (item.id === id ? { ...item, completed: !item.completed } : item)),
+    )
+  }
+
+  const deleteAll = () => {
+    const ok = window.confirm('¿Estás seguro de borrar todos los elementos?')
+    if (ok) setItems([])
   }
 
   const filteredItems = items.filter((item) =>
@@ -73,7 +84,14 @@ function App() {
           ) : filteredItems.length === 0 ? (
             <p className="empty-state">No se encontraron elementos con ese nombre.</p>
           ) : (
-            <List items={filteredItems} deleteItem={deleteItem} editItem={editItem} />
+            <>
+              <List items={filteredItems} deleteItem={deleteItem} editItem={editItem} toggleComplete={toggleComplete} />
+              <div style={{ marginTop: 12 }}>
+                <button className="todo-button todo-button--danger" onClick={deleteAll}>
+                  Borrar todo
+                </button>
+              </div>
+            </>
           )}
         </section>
       </section>
