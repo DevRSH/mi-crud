@@ -1,3 +1,30 @@
+Proyecto CRUD - Mejoras de interfaz y funcionalidades
+
+Este repositorio contiene una pequeña aplicación CRUD en React que guarda los datos en el LocalStorage del navegador. Trabajo hecho como estudiante para la entrega.
+
+Cómo ejecutar (local):
+
+1. Clona el repositorio:
+
+```
+git clone <tu-repositorio>
+cd mi-crud
+```
+
+2. Instala dependencias y levanta la app:
+
+```
+npm install
+npm start   # o npm run dev
+```
+
+Qué entregué (commits importantes):
+
+- `commit 1: estilos CSS y conexión con className` — estilos básicos: tarjeta, título, formulario, lista y botones coloreados.
+- `validación, contador y confirmación al eliminar` — validación de formulario, contador total y confirmación antes de borrar un elemento.
+- `completar, buscar y borrar todo` — marcar como completado (tachado), buscador en vivo y botón para borrar todo con confirmación.
+
+
 # React + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
